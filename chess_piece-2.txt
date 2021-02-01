@@ -1,0 +1,57 @@
+class Chess_Piece:
+  def __init__(self, ID, position, color, direction, board_size=(8,8)):
+  #creates descriptions for chess pieces.  
+    self._ID = ID
+    self._position = position
+    self._color = color 
+    self._direction = direction
+    self._board_size = board_size
+   
+    if(self._direction != "UP" and self._direction != "DOWN"):
+      raise Exception()
+    
+  def get_ID(self):
+    return self._ID
+      
+  def get_position(self):
+    return tuple(self._position)
+
+  def set_position(self, pos):
+    self._position = pos
+      
+  def get_color(self):
+    return self._color
+    
+  def get_direction(self):
+    return self._direction
+  
+  def get_board_size(self):
+    return(self._board_size)
+  
+  def remove(self):
+    self._position = (None, None)
+  
+  def is_piece_on_board(self):
+    return self.get_position() != (None,None)
+      
+  def place(self, coord):
+    if self.is_piece_on_board():
+      return
+    scope = self._board_size
+    if coord <= scope and coord >= (0,0):
+      self._position = coord
+    else:
+      self._position = (None,None)
+
+  def take(self, taken):
+    self.set_position(taken.get_position())
+    taken.remove()
+  
+  def move(self, coord):
+    valid_moves = self.get_valid_moves()
+    if coord in valid_moves:
+      self.set_position(coord)
+
+
+
+    
