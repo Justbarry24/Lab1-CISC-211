@@ -12,7 +12,8 @@ class Skateboard(Vehicle):
 	
 	def decelerate(self):
 		self._current_speed = 0
-	
+	#remove statement 
+  """
 	def move(self):
 		a = self._location[1]
 		c = self.get_current_speed
@@ -25,6 +26,6 @@ class Skateboard(Vehicle):
 		if self._direction == "WEST":
 			pass
 		return self._location
-		
+		"""
 
 		
